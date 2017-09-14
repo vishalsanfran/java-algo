@@ -74,8 +74,23 @@ public class Mergesort {
         curB = nextB;
       }
     }
-    System.out.println(nodeStr(head));
+    //System.out.println(nodeStr(head));
     return head;
+  }
+
+  public static Node rev(Node a) {
+    if(a == null || a.next == null)
+      return a;
+    Node n = a.next;
+    Node c = a;
+    Node p = null;
+    while(c != null) {
+      Node nxt = c.next;
+      c.next = p;
+      p = c;
+      c = nxt;
+    }
+    return p;
   }
 
   public static void main(String args[]) throws Exception {
@@ -87,6 +102,7 @@ public class Mergesort {
     }
     Node sorted = sortUtil(ll.head);
     ll.head = sorted;
-    System.out.println(ll);
+    System.out.println("mergesort " + nodeStr(ll.head));
+    System.out.println("rev "+ nodeStr(rev(ll.head)));
   }
 }
